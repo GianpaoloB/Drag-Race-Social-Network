@@ -53,6 +53,9 @@ export default class App extends React.Component {
                                     <Link to="/dragrace">Dragrace</Link>
                                 </li>
                                 <li>
+                                    <Link to="/profile">Profile</Link>
+                                </li>
+                                <li>
                                     <Link to="/friends">Friends</Link>
                                 </li>
                                 <li>
