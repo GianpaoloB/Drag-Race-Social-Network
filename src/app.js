@@ -12,7 +12,10 @@ import OtherProfile from "./otherprofile.js";
 import Friends from "./friends";
 import Online from "./online";
 import Chat from "./chat";
-
+import Dragrace from "./dragrace";
+import Season from "./season";
+import Episode from "./episode";
+import Queen from "./queen";
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -39,13 +42,16 @@ export default class App extends React.Component {
                             <h1>
                                 <Link to="/">
                                     <img
-                                        src="/img/bearbook-logo.png"
+                                        src="/img/rupaul_dragrace_logo.png"
                                         alt="Bear Book Homepage"
                                     />
                                 </Link>
                             </h1>
 
                             <nav>
+                                <li>
+                                    <Link to="/dragrace">Dragrace</Link>
+                                </li>
                                 <li>
                                     <Link to="/friends">Friends</Link>
                                 </li>
@@ -72,9 +78,18 @@ export default class App extends React.Component {
                             />
                         </div>
                         <div>
+                            <Route exact path="/" component={Dragrace} />
                             <Route
                                 exact
-                                path="/"
+                                path="/dragrace"
+                                component={Dragrace}
+                            />
+                            <Route path="/season" component={Season} />
+                            <Route path="/episode" component={Episode} />
+                            <Route path="/queens" component={Queen} />
+                            <Route
+                                exact
+                                path="/profile"
                                 render={() => {
                                     return (
                                         <Profile

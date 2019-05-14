@@ -3,7 +3,7 @@ const app = express();
 const ca = require("chalk-animation");
 const server = require("http").Server(app);
 const io = require("socket.io")(server, {
-    origins: "localhost:8080 bear-book.herokuapp.com:*"
+    origins: "localhost:8080 herstory.herokuapp.com:*"
 });
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
@@ -239,7 +239,10 @@ app.post("/friendship/accept/:id", (request, response) => {
         }
     );
 });
-
+// ////////DRAGRACE
+// app.get("/rpdr/seasons", (request, response) => {
+//
+// });
 app.get("*", (request, response) => {
     if (!request.session.userId && request.url != "/welcome") {
         response.redirect("/welcome");

@@ -61,3 +61,10 @@ export function addNewChatToRedux(chat) {
         chat
     };
 }
+export async function getRDSeasons() {
+    const { data } = await axios.get("/rpdr/seasons");
+    return {
+        type: "GET_RPDR_SEASONS",
+        data
+    };
+}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import * as moment from "moment";
 import { connect } from "react-redux";
 import { socket } from "./socket";
+import Online from "./online";
 
 class Chat extends React.Component {
     constructor(props) {
@@ -36,6 +37,9 @@ class Chat extends React.Component {
         return (
             <section className="project" id="friendspage">
                 <h3>CHATTY</h3>
+                <div id="online_chats">
+                    <Online />
+                </div>
                 <div
                     id="chats-container"
                     ref={chatsContainer => (this.myDiv = chatsContainer)}
