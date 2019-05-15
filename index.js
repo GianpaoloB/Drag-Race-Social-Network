@@ -246,6 +246,20 @@ app.get("/queens/season/11", (request, response) => {
         response.json(rows);
     });
 });
+app.get("/queens/ranking/:id", (request, response) => {
+    db.getRanking(request.params.id).then(({ rows }) => {
+        console.log("Here the Ranking", rows);
+        response.json(rows);
+    });
+});
+app.get("/queens/own/ranking/:id", (request, response) => {
+    db.getOwnRanking(request.params.id, request.session.userId).then(
+        ({ rows }) => {
+            console.log("Here the OWN Ranking", rows);
+            response.json(rows);
+        }
+    );
+});
 app.post("/queens/ranking/:id", (request, response) => {
     console.log(request.body);
     let c = request.body.charisma;
@@ -253,13 +267,24 @@ app.post("/queens/ranking/:id", (request, response) => {
     let n = request.body.nerve;
     let t = request.body.talent;
 
-    db.upsertRank(request.param.id, c, u, n, t, request.session.userId)
+    db.insertRank(request.params.id, c, u, n, t, request.session.userId)
         .then(({ rows }) => {
-            console.log("Upsert Rank", rows);
+            console.log("Insert Rank", rows);
             response.json(rows);
         })
         .catch(err => {
             console.log("Upsert not working babe", err);
+            db.updateRank(
+                request.params.id,
+                c,
+                u,
+                n,
+                t,
+                request.session.userId
+            ).then(({ rows }) => {
+                console.log("Updated Rank", rows);
+                response.json(rows);
+            });
         });
 });
 

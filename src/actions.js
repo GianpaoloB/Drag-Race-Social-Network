@@ -69,3 +69,19 @@ export async function getQueens() {
         data
     };
 }
+export async function getRanking(queenId) {
+    const { data } = await axios.get("/queens/ranking/" + queenId);
+    console.log("Get queens action", data);
+    return {
+        type: "GET_RANKING_QUEEN",
+        data
+    };
+}
+export async function getOwnRanking(queenId) {
+    const { data } = await axios.get("/queens/own/ranking/" + queenId);
+    console.log("Get queens action", data);
+    return {
+        type: "GET_OWN_RANKING_QUEEN",
+        data
+    };
+}

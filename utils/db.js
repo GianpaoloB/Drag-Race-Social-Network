@@ -143,13 +143,24 @@ exports.newChatMessage = function newChatMessage(userId, message, receiver) {
 };
 // GET_RPDR_QUEENS
 exports.getQueens = function getQueens() {
-    const query = `SELECT * FROM queens`;
+    const query = `SELECT * FROM queens;`;
     return db.query(query);
 };
-exports.upsertRank = function upsertRank(queenId, c, u, n, t, userId) {
-    let q = `INSERT INTO ranking (queen_id, charisma, uniqueness, nerve,talent,user_id) VALUES ($1,$2,$3,$4,$5,$6)
-    ON CONFLICT ON CONSTRAINT rank DO UPDATE
-    SET queen_id = $1, charisma= $2, uniqueness=$3, nerve=$4, talent=$5, user_id=$6 RETURNING *;`;
+exports.getRanking = function getRanking(queenId) {
+    const query = `SELECT * FROM ranking WHERE queen_id = $1;`;
+    return db.query(query, [queenId]);
+};
+exports.getOwnRanking = function getOwnRanking(queenId, userId) {
+    const query = `SELECT * FROM ranking WHERE queen_id = $1 AND user_id=$2`;
+    return db.query(query, [queenId, userId]);
+};
+exports.insertRank = function insertRank(queenId, c, u, n, t, userId) {
+    let q = `INSERT INTO ranking (queen_id, charisma, uniqueness, nerve, talent, user_id) VALUES ($1,$2,$3,$4,$5,$6) RETURNING *;`;
     let params = [queenId, c, u, n, t, userId];
+    return db.query(q, params);
+};
+exports.updateRank = function updateRank(queenId, c, u, n, t, userId) {
+    let q = `UPDATE ranking SET charisma=$2, uniqueness=$3, nerve=$4, talent=$5 WHERE(queen_id=$1 AND user_id=$6) RETURNING *;`;
+    let params = [queenId, c || null, u || null, n || null, t || null, userId];
     return db.query(q, params);
 };

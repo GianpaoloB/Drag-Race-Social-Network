@@ -71,6 +71,20 @@ export default function reducer(state = {}, action) {
                 queens: action.data
             });
             break;
+        case "GET_RANKING_QUEEN":
+            console.log("Reducing the ", action);
+            return Object.assign({}, state, {
+                ...state,
+                ranking: action.data
+            });
+            break;
+        case "GET_OWN_RANKING_QUEEN":
+            console.log("Own Ranking the ", action);
+            return Object.assign({}, state, {
+                ...state,
+                ownRanking: action.data[0]
+            });
+            break;
     }
     return state;
 
