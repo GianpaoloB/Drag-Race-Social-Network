@@ -3,7 +3,7 @@ const app = express();
 const ca = require("chalk-animation");
 const server = require("http").Server(app);
 const io = require("socket.io")(server, {
-    origins: "localhost:8080 herstory.herokuapp.com:*"
+    origins: "localhost:8080 dragrace.herokuapp.com:*"
 });
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
