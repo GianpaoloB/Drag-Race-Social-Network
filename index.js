@@ -240,9 +240,29 @@ app.post("/friendship/accept/:id", (request, response) => {
     );
 });
 // ////////DRAGRACE
-// app.get("/rpdr/seasons", (request, response) => {
-//
-// });
+app.get("/queens/season/11", (request, response) => {
+    db.getQueens().then(({ rows }) => {
+        console.log("Here the Qureeeeeeeeeeeeeeeeeenzz", rows);
+        response.json(rows);
+    });
+});
+app.post("/queens/ranking/:id", (request, response) => {
+    console.log(request.body);
+    let c = request.body.charisma;
+    let u = request.body.uniqueness;
+    let n = request.body.nerve;
+    let t = request.body.talent;
+
+    db.upsertRank(request.param.id, c, u, n, t, request.session.userId)
+        .then(({ rows }) => {
+            console.log("Upsert Rank", rows);
+            response.json(rows);
+        })
+        .catch(err => {
+            console.log("Upsert not working babe", err);
+        });
+});
+
 app.get("*", (request, response) => {
     if (!request.session.userId && request.url != "/welcome") {
         response.redirect("/welcome");

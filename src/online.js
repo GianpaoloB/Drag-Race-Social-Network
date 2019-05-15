@@ -44,7 +44,6 @@ class Online extends React.Component {
         }
         return (
             <section className="project" id="friendspage">
-                <h3>Here you can see who's online right now</h3>
                 <div id="onlineusers">{onlines}</div>
             </section>
         );

@@ -64,6 +64,13 @@ export default function reducer(state = {}, action) {
                 chats: [...state.chats, action.chat]
             });
             break;
+        case "GET_RPDR_QUEENS":
+            console.log("Reducing the ", action);
+            return Object.assign({}, state, {
+                ...state,
+                queens: action.data
+            });
+            break;
     }
     return state;
 

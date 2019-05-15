@@ -141,3 +141,15 @@ exports.newChatMessage = function newChatMessage(userId, message, receiver) {
     let params = [userId, message, receiver || null];
     return db.query(query, params);
 };
+// GET_RPDR_QUEENS
+exports.getQueens = function getQueens() {
+    const query = `SELECT * FROM queens`;
+    return db.query(query);
+};
+exports.upsertRank = function upsertRank(queenId, c, u, n, t, userId) {
+    let q = `INSERT INTO ranking (queen_id, charisma, uniqueness, nerve,talent,user_id) VALUES ($1,$2,$3,$4,$5,$6)
+    ON CONFLICT ON CONSTRAINT rank DO UPDATE
+    SET queen_id = $1, charisma= $2, uniqueness=$3, nerve=$4, talent=$5, user_id=$6 RETURNING *;`;
+    let params = [queenId, c, u, n, t, userId];
+    return db.query(q, params);
+};

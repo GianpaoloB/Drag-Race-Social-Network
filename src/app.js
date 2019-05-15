@@ -16,6 +16,8 @@ import Dragrace from "./dragrace";
 import Season from "./season";
 import Episode from "./episode";
 import Queen from "./queen";
+import QueensGeneral from "./queens_general";
+import QueenRanking from "./queens_ranking";
 export default class App extends React.Component {
     constructor(props) {
         super(props);
@@ -62,7 +64,7 @@ export default class App extends React.Component {
                                     <Link to="/chat">Chat</Link>
                                 </li>
                                 <li>
-                                    <Link to="/online">Online Users</Link>
+                                    <Link to="/game">Game</Link>
                                 </li>
                                 <li>
                                     <a href="/logout">Logout</a>
@@ -90,6 +92,15 @@ export default class App extends React.Component {
                             <Route path="/season" component={Season} />
                             <Route path="/episode" component={Episode} />
                             <Route path="/queens" component={Queen} />
+                            <Route
+                                exact
+                                path="/game"
+                                component={QueensGeneral}
+                            />
+                            <Route
+                                path="/game/ranking"
+                                component={QueenRanking}
+                            />
                             <Route
                                 exact
                                 path="/profile"
