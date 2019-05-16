@@ -62,7 +62,7 @@ export default class Uploader extends React.Component {
                         </label>
 
                         <button onClick={e => this.submit(e)}>
-                            Get the next level of Bearability
+                            Get the next level of Sickening!
                         </button>
                     </form>
                 </div>

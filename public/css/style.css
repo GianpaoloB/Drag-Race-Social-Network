@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Gugi");
+@import url("https://fonts.googleapis.com/css?family=Boogaloo");
+
 * {
     margin: 0;
     padding: 0;
@@ -8,7 +10,8 @@ body {
     background: #db0985 url(/img/background.png) center left / contain repeat-x;
     background-attachment: fixed;
     min-height: 100vh;
-    font-family: Gugi, sans-serif;
+    font-family: "Boogaloo", sans-serif;
+    font-size: 20px;
 }
 main {
     display: flex;
@@ -134,6 +137,9 @@ section#queen.queenapi h4#winner {
     color: yellow;
     text-shadow: 1px 1px 11px grey;
 }
+.queen.friendslist.project:hover {
+    box-shadow: 10px 10px 10px grey;
+}
 .queen.friendslist.project.winner {
     background: rgba(250, 215, 0, 0.85);
 }
@@ -207,6 +213,24 @@ section#modal {
     display: flex;
     flex-direction: column;
     cursor: url(/img/mouse.png) 1 1, auto;
+}
+.season a {
+    text-decoration: none;
+    color: magenta;
+    text-align: center;
+}
+#seasons > div.container.episodes > ul > li,
+#seasons > div.container.episodes > ul > li a {
+    text-decoration: none;
+    color: magenta;
+    margin-bottom: 10px;
+}
+#seasons > div.container.episodes > ul > li a:hover {
+    color: yellow;
+    text-shadow: 2px 2px 2px gray;
+}
+.season a h4 {
+    margin-top: 10px;
 }
 #seasons .container {
     flex-direction: row;
@@ -335,13 +359,13 @@ section.project#queen h3 {
     color: grey;
 }
 #chats-container .singlemessage p {
-    font-size: 14px;
+    font-size: 20px;
 }
 #chats-container .singlemessage p.date {
     align-self: flex-start;
     margin-top: 10px;
     color: gray;
-    font-size: 12px;
+    font-size: 16px;
 }
 #chats-container .singlemessage:nth-child(odd) p.date {
     padding-right: 10px;
@@ -396,7 +420,7 @@ input {
     box-sizing: border-box;
     text-indent: 15px;
     margin: 5px 0 15px 0;
-    font-family: inherit;
+    font-family: "Boogaloo", sans-serif;
 }
 #modal form input[type="file"] {
     width: 0.1px;
@@ -434,11 +458,12 @@ button {
     border: none;
     position: relative;
     height: 60px;
-    font-size: 1.6em;
+    font-size: 24px;
     padding: 0 2em;
     cursor: pointer;
     transition: 800ms ease all;
     outline: none;
+    font-family: "Boogaloo", sans-serif;
 }
 button.friendbutton {
     font-size: 13px;
