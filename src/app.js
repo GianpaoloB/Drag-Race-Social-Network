@@ -109,6 +109,11 @@ export default class App extends React.Component {
                                         <Profile
                                             first={this.state.first_name}
                                             last={this.state.last_name}
+                                            clickHandler={() =>
+                                                this.setState({
+                                                    showUploader: true
+                                                })
+                                            }
                                             profilePic={
                                                 <ProfilePic
                                                     id={this.state.id}

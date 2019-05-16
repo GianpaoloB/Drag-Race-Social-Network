@@ -6,8 +6,8 @@ export default function Welcome() {
     return (
         <section className="project">
             <h2>
-                Welcome to Bearbook, the social network for bears and their
-                ursine lovers friend
+                Welcome to the main stage of the Dragrace world, the social
+                network for the Queenzz and their sickening friendzzzz!
             </h2>
             <HashRouter>
                 <div>

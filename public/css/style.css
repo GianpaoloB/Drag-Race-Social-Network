@@ -64,7 +64,7 @@ main #app {
 }
 span#profilepic {
     width: 80px;
-    background: beige;
+    background: rgba(218, 34, 254, 0.15);
     border-radius: 20px;
     border: 2px solid darkgray;
     padding: 8px;
@@ -104,6 +104,41 @@ section.project#queen #userdata {
 #userdata article {
     margin-left: 30px;
     width: 70%;
+}
+#namegen #name {
+    flex-direction: row;
+    margin: 30px 0;
+}
+#namegen #name div {
+    margin-right: 20px;
+}
+section#queen.queenapi #userdata article {
+    display: block;
+    position: relative;
+}
+section#queen.queenapi h4#congenial,
+section#queen.queenapi h4#winner {
+    font-size: 30px;
+    float: right;
+    transform: rotate(-22deg);
+    position: absolute;
+    top: 35px;
+    width: 240px;
+    margin: 0;
+    padding: o;
+    right: 0px;
+    color: limegreen;
+    text-shadow: 1px 1px 1px grey;
+}
+section#queen.queenapi h4#winner {
+    color: yellow;
+    text-shadow: 1px 1px 11px grey;
+}
+.queen.friendslist.project.winner {
+    background: rgba(250, 215, 0, 0.85);
+}
+.queen.friendslist.project.congenial {
+    background: rgba(95, 255, 41, 0.85);
 }
 #queen #userdata article {
     justify-content: space-between;
@@ -196,9 +231,34 @@ section.project#friendspage,
 section.project#queen {
     margin: 0 auto;
 }
+#friendspage\ onlines {
+    padding: 0;
+}
 section.project#friendspage #onlineusers {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+}
+section.project#friendspage #onlineusers {
+}
+section.project#friendspage #onlineusers .friendslist.project {
+    width: 100px;
+    padding: 20px;
+    margin-left: 20px;
+    background: rgba(218, 34, 254, 0.15);
+}
+section.project#friendspage #onlineusers .friendslist.project a {
+    font-size: 12px;
+}
+section.project#friendspage
+    #onlineusers
+    .friendslist.project
+    a
+    span.profilepic {
+    width: 70px;
+    height: 80px;
 }
 #friends,
 #wannabes {

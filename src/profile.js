@@ -10,7 +10,7 @@ export default class Profile extends React.Component {
         return (
             <div id="profile">
                 <div id="userdata" className="project">
-                    <span>
+                    <span onClick={this.props.clickHandler}>
                         <img
                             src={
                                 this.props.profilePic.props.image_url ||

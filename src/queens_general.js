@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getQueens } from "./actions";
-
+import QueensNameGenerator from "./queens_name_generator";
 class QueensGeneral extends React.Component {
     constructor(props) {
         super(props);
@@ -53,8 +53,16 @@ class QueensGeneral extends React.Component {
         return (
             <section className="project" id="friendspage">
                 <div id="seasons">
-                    <h3>SEASONS 11 Queens</h3>
+                    <h3>
+                        SEASONS 11 Queens Ranking - Say yours about their
+                        Charisma Uniqueness nerve and Talent!!!
+                    </h3>
                     <div className="container queens">{queenZ}</div>
+                    <br />
+                    <br />
+                    <h3>Drag queen name generator!</h3>
+
+                    <QueensNameGenerator />
                 </div>
             </section>
         );

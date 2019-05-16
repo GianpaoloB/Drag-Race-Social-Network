@@ -18,14 +18,14 @@ export default class FriendButton extends React.Component {
                 this.setState({
                     friends: false,
                     action: "send",
-                    buttonText: "Wanna bear with me?"
+                    buttonText: "Kai Kai?"
                 });
                 console.log("Not friends yet", this.state);
             } else if (data.status) {
                 this.setState({
                     friends: true,
                     action: "delete",
-                    buttonText: "Unbear!"
+                    buttonText: "Throw shade!"
                 });
                 console.log("FRIENDZONE ON!", this.state);
             } else if (data.status == false) {
@@ -33,14 +33,14 @@ export default class FriendButton extends React.Component {
                     this.setState({
                         friends: "pending",
                         action: "delete",
-                        buttonText: "Unbear!"
+                        buttonText: "Throw shade!"
                     });
                     console.log("NOT ACCEPTED YET", this.state);
                 } else {
                     this.setState({
                         friends: "pending",
                         action: "accept",
-                        buttonText: "Become Bearies <3",
+                        buttonText: "Become Heathers <3",
                         reject: true
                     });
                     console.log(
@@ -62,7 +62,7 @@ export default class FriendButton extends React.Component {
                 this.setState({
                     friends: "pending",
                     action: "delete",
-                    buttonText: "Unbear!"
+                    buttonText: "Throw shade!"
                 });
             });
             console.log("Sending the friendship request", this.state);
@@ -72,7 +72,7 @@ export default class FriendButton extends React.Component {
                 this.setState({
                     friends: false,
                     action: "send",
-                    buttonText: "Wanna bear with me?"
+                    buttonText: "Kai Kai?"
                 });
             });
         } else if (e == "accept") {
@@ -81,7 +81,7 @@ export default class FriendButton extends React.Component {
                 this.setState({
                     friends: true,
                     action: "delete",
-                    buttonText: "Unbear!"
+                    buttonText: "Throw shade!"
                 });
             });
         } else {
@@ -104,7 +104,7 @@ export default class FriendButton extends React.Component {
                         id={this.props.id}
                         onClick={e => this.submit("delete")}
                     >
-                        Unbear!
+                        Throw shade!
                     </button>
                 )}
             </div>

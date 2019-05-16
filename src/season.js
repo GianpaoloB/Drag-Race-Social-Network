@@ -73,11 +73,16 @@ class Season extends React.Component {
             this.state.queens &&
                 this.state.queens.map(queen => {
                     let eachQueen = "/queens/" + queen.id;
+                    let classes = "";
+                    if (queen.winner) {
+                        classes = "queen friendslist project winner";
+                    } else if (queen.missCongeniality) {
+                        classes = "queen friendslist project congenial";
+                    } else {
+                        classes = "queen friendslist project";
+                    }
                     queens.push(
-                        <div
-                            className="queen friendslist project"
-                            key={queen.id}
-                        >
+                        <div className={classes} key={queen.id}>
                             <Link to={eachQueen}>
                                 <span className="profilepic">
                                     <img
@@ -95,17 +100,35 @@ class Season extends React.Component {
             this.state.episodes &&
                 this.state.episodes.map(episode => {
                     let epiLink = "/episode/" + episode.id;
-                    episodes.push(
-                        <li>
-                            <Link to={epiLink}>
+                    if (
+                        episode.title != "Grand Finale" &&
+                        episode.title != "Grande Finale" &&
+                        episode.title != "Reunited!" &&
+                        episode.title != "Re-United!" &&
+                        episode.title != "RuPaul Rewind"
+                    ) {
+                        episodes.push(
+                            <li key={episode.id}>
+                                <Link to={epiLink}>
+                                    {episode.episodeInSeason} - {episode.title}{" "}
+                                    aired on{" "}
+                                    {moment(episode.airDate).format(
+                                        "MMMM Do YYYY, h:mm a"
+                                    )}
+                                </Link>
+                            </li>
+                        );
+                    } else {
+                        episodes.push(
+                            <li key={episode.id}>
                                 {episode.episodeInSeason} - {episode.title}{" "}
                                 aired on{" "}
                                 {moment(episode.airDate).format(
                                     "MMMM Do YYYY, h:mm a"
                                 )}
-                            </Link>
-                        </li>
-                    );
+                            </li>
+                        );
+                    }
                 });
         }
         {

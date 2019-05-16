@@ -98,22 +98,40 @@ class Queen extends React.Component {
             this.state.queen.episodes &&
                 this.state.queen.episodes.map(episode => {
                     let epiLink = "/episode/" + episode.id;
-                    episodes.push(
-                        <li>
-                            <Link to={epiLink}>
+                    if (
+                        episode.title != "Grand Finale" &&
+                        episode.title != "Grande Finale" &&
+                        episode.title != "Reunited!" &&
+                        episode.title != "Re-United!" &&
+                        episode.title != "RuPaul Rewind"
+                    ) {
+                        episodes.push(
+                            <li key={episode.id}>
+                                <Link to={epiLink}>
+                                    {episode.episodeInSeason} - {episode.title}{" "}
+                                    aired on{" "}
+                                    {moment(episode.airDate).format(
+                                        "MMMM Do YYYY, h:mm a"
+                                    )}
+                                </Link>
+                            </li>
+                        );
+                    } else {
+                        episodes.push(
+                            <li key={episode.id}>
                                 {episode.episodeInSeason} - {episode.title}{" "}
                                 aired on{" "}
                                 {moment(episode.airDate).format(
                                     "MMMM Do YYYY, h:mm a"
                                 )}
-                            </Link>
-                        </li>
-                    );
+                            </li>
+                        );
+                    }
                 });
         }
         return (
             <div id="profile">
-                <section className="project" id="queen">
+                <section className="project queenapi" id="queen">
                     <div id="userdata">
                         <span>
                             <img
@@ -132,6 +150,12 @@ class Queen extends React.Component {
                                 <br />
                                 {seasons}
                             </p>
+                            {this.state.queen.missCongeniality && (
+                                <h4 id="congenial"> MISS CONGENIALITY!!!</h4>
+                            )}
+                            {this.state.queen.winner && (
+                                <h4 id="winner"> WINNER OF THE SEASON</h4>
+                            )}
                         </article>
                     </div>
                     <br />

@@ -38,7 +38,7 @@ class Friends extends React.Component {
                             }}
                             className="friendbutton"
                         >
-                            Unbear
+                            Throw shade!
                         </button>
                     </div>
                 );
@@ -61,7 +61,7 @@ class Friends extends React.Component {
                             }
                             className="friendbutton"
                         >
-                            Unbear
+                            Throw shade!
                         </button>
 
                         <button
@@ -70,7 +70,7 @@ class Friends extends React.Component {
                             }}
                             className="friendbutton"
                         >
-                            Become Bearies
+                            {"Become Heathers"}
                         </button>
                     </div>
                 );
@@ -80,11 +80,11 @@ class Friends extends React.Component {
         return (
             <section className="project" id="friendspage">
                 <div id="friends">
-                    <h3>Your Bearies</h3>
+                    <h3>Your Heathers</h3>
                     <div className="container">{friends}</div>
                 </div>
                 <div id="wannabes">
-                    <h3>They wanna become bearies with you</h3>
+                    <h3>They wanna Kai Kai with you</h3>
                     <div className="container">{wannabes}</div>
                 </div>
             </section>

@@ -43,7 +43,7 @@ class Online extends React.Component {
                 });
         }
         return (
-            <section className="project" id="friendspage">
+            <section className="project" id="friendspage onlines">
                 <div id="onlineusers">{onlines}</div>
             </section>
         );

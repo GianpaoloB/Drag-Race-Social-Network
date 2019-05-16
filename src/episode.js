@@ -18,28 +18,30 @@ class Episode extends React.Component {
         )
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                console.log("Challenges", result);
                 this.setState({
                     challenges: result
                 });
-                let pics = [];
-                Promise.all(
-                    result[0].queens.map(queen =>
-                        fetch(
-                            "http://www.nokeynoshade.party/api/queens/" +
-                                queen.id
+                if (result[0]) {
+                    let pics = [];
+                    Promise.all(
+                        result[0].queens.map(queen =>
+                            fetch(
+                                "http://www.nokeynoshade.party/api/queens/" +
+                                    queen.id
+                            )
+                                .then(res => res.json())
+                                .then(data => {
+                                    pics.push(data);
+                                })
                         )
-                            .then(res => res.json())
-                            .then(data => {
-                                pics.push(data);
-                            })
-                    )
-                ).then(result => {
-                    this.setState({
-                        isLoaded: true,
-                        queens: pics
+                    ).then(result => {
+                        this.setState({
+                            isLoaded: true,
+                            queens: pics
+                        });
                     });
-                });
+                }
             });
         fetch("http://www.nokeynoshade.party/api/episodes/" + number)
             .then(res => res.json())
