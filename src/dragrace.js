@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { setSeasons } from "./actions";
 class Dragrace extends React.Component {
     constructor(props) {
         super(props);
@@ -15,7 +16,8 @@ class Dragrace extends React.Component {
                     isLoaded: true,
                     seasons: result
                 });
-                console.log(this.state.seasons);
+                console.log("Just set the state", this.state.seasons);
+                this.props.dispatch(setSeasons(this.state.seasons));
             });
     }
     render() {
@@ -72,9 +74,9 @@ class Dragrace extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log("This is the state ", state);
+    console.log("This is the state ", state.seasons);
     return {
-        queen: state
+        seasons: state.seasons
     };
 };
 

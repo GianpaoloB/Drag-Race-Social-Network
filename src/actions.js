@@ -85,3 +85,10 @@ export async function getOwnRanking(queenId) {
         data
     };
 }
+export async function setSeasons(seasons) {
+    console.log("Setting the seasons", seasons);
+    return {
+        type: "SET_SEASONS",
+        seasons
+    };
+}

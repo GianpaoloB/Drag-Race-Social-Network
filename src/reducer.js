@@ -85,6 +85,13 @@ export default function reducer(state = {}, action) {
                 ownRanking: action.data[0]
             });
             break;
+        case "SET_SEASONS":
+            console.log("Own Ranking the ", action);
+            return Object.assign({}, state, {
+                ...state,
+                seasons: action
+            });
+            break;
     }
     return state;
 

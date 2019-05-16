@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
+
 class Season extends React.Component {
     constructor(props) {
         super(props);
@@ -14,6 +15,9 @@ class Season extends React.Component {
         fetch("http://www.nokeynoshade.party/api/seasons/" + number)
             .then(res => res.json())
             .then(result => {
+                this.setState({
+                    season: result
+                });
                 let pics = [];
                 Promise.all(
                     result.queens.map(queen =>
@@ -29,7 +33,6 @@ class Season extends React.Component {
                 ).then(result => {
                     this.setState({
                         isLoaded: true,
-                        season: result,
                         queens: pics
                     });
                 });
@@ -55,9 +58,6 @@ class Season extends React.Component {
     }
     render() {
         console.log("in the render", this.state);
-        // const handleInput = e => {
-        //     this.setState({ [e.target.name]: e.target.value });
-        // };
 
         if (!this.state.queens) {
             return (
@@ -155,26 +155,32 @@ class Season extends React.Component {
                     );
                 });
         }
-        this;
+        let seasonNumber = "";
+        console.log(
+            "SEASON NUMBER",
+            this.state.season.seasonNumber.slice(0, 1)
+        );
+        if (this.state.season.seasonNumber.slice(0, 1) == "A") {
+            seasonNumber = this.state.season.seasonNumber.replace(
+                "A",
+                "All STARS "
+            );
+        } else {
+            seasonNumber = this.state.season.seasonNumber;
+        }
         return (
             <section className="project" id="friendspage">
                 <div id="seasons">
-                    <h3>
-                        SEASONS {document.location.pathname.slice(8)} Queens
-                    </h3>
+                    <h3>SEASONS {seasonNumber} Queens</h3>
                     <div className="container queens">{queens}</div>
 
-                    <h3>
-                        SEASONS {document.location.pathname.slice(8)} Episodes
-                    </h3>
+                    <h3>SEASONS {seasonNumber} Episodes</h3>
                     <div className="container episodes">
                         <ul>{episodes}</ul>
                     </div>
                     <br />
                     <br />
-                    <h3>
-                        SEASONS {document.location.pathname.slice(8)} Judges
-                    </h3>
+                    <h3>SEASONS {seasonNumber} Judges</h3>
                     <div className="container judges">{judges}</div>
                 </div>
             </section>
@@ -185,7 +191,7 @@ class Season extends React.Component {
 const mapStateToProps = state => {
     console.log("This is the state ", state);
     return {
-        queen: state
+        // seasons: state.seasons
     };
 };
 
