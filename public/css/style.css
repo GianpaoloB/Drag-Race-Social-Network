@@ -288,6 +288,9 @@ section.project#friendspage
 #wannabes {
     margin-bottom: 30px;
 }
+#friends {
+    position: relative;
+}
 #friends h3,
 #wannabes h3,
 section.project#friendspage h3,
@@ -395,6 +398,13 @@ form {
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+}
+form.searchbox {
+    float: right;
+    top: -15px;
+    position: absolute;
+    right: 0;
+    z-index: 1;
 }
 form label {
     display: flex;
@@ -585,4 +595,28 @@ input[type="range"]:focus::-ms-fill-lower {
 }
 input[type="range"]:focus::-ms-fill-upper {
     background: #ffbae6;
+}
+#results {
+    width: 200px;
+}
+.result {
+    width: 200px;
+    padding: 5px 10px;
+    background: white;
+    list-style: none;
+}
+.result a {
+    font-size: 18px;
+}
+.result a span.profilepic {
+    width: 30px;
+    height: 30px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+.result a span.profilepic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

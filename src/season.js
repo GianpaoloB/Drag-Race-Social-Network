@@ -102,7 +102,15 @@ class Season extends React.Component {
                     let epiLink = "/episode/" + episode.id;
                     if (
                         episode.title != "Grand Finale" &&
+                        episode.title != "Extra Special Edition" &&
+                        episode.title != "The Main Event Clip Show" &&
+                        episode.title != "The Grand Finale" &&
+                        episode.title != "Countdown to the Crown" &&
+                        episode.title != "The Finale" &&
                         episode.title != "Grande Finale" &&
+                        episode.title != "Reunion" &&
+                        episode.title != "Reunited" &&
+                        episode.title != "Queens Reunited" &&
                         episode.title != "Reunited!" &&
                         episode.title != "Re-United!" &&
                         episode.title != "RuPaul Rewind"
@@ -132,7 +140,7 @@ class Season extends React.Component {
                 });
         }
         {
-            this.state.judges &&
+            !this.state.judges.error &&
                 this.state.judges.map(judge => {
                     judges.push(
                         <div
@@ -171,17 +179,28 @@ class Season extends React.Component {
         return (
             <section className="project" id="friendspage">
                 <div id="seasons">
-                    <h3>SEASONS {seasonNumber} Queens</h3>
-                    <div className="container queens">{queens}</div>
-
-                    <h3>SEASONS {seasonNumber} Episodes</h3>
-                    <div className="container episodes">
-                        <ul>{episodes}</ul>
-                    </div>
+                    {this.state.queens && (
+                        <article>
+                            <h3>SEASONS {seasonNumber} Queens</h3>
+                            <div className="container queens">{queens}</div>
+                        </article>
+                    )}
+                    {this.state.episodes.length > 0 && (
+                        <article className="elements">
+                            <h3>SEASONS {seasonNumber} Episodes</h3>
+                            <div className="container episodes">
+                                <ul>{episodes}</ul>
+                            </div>
+                        </article>
+                    )}
                     <br />
                     <br />
-                    <h3>SEASONS {seasonNumber} Judges</h3>
-                    <div className="container judges">{judges}</div>
+                    {!this.state.judges.error && (
+                        <article className="elements">
+                            <h3>SEASONS {seasonNumber} Judges</h3>
+                            <div className="container judges">{judges}</div>
+                        </article>
+                    )}
                 </div>
             </section>
         );

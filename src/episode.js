@@ -75,13 +75,7 @@ class Episode extends React.Component {
     }
     render() {
         console.log("in the render", this.state);
-        // const handleInput = e => {
-        //     this.setState({ [e.target.name]: e.target.value });
-        // };
-        // var winner =
-        //     this.state.challenges &&
-        //     this.state.challenges[0].queens.filter(wonby => wonby.won == true);
-        // console.log("The winner is", winner);
+
         if (!this.state.queens) {
             return (
                 <section id="modal">
@@ -116,16 +110,18 @@ class Episode extends React.Component {
                 });
         }
         {
-            this.state.challenges &&
+            !this.state.challenges.error &&
                 this.state.challenges.map(challenge => {
                     if (challenge.type == "main") {
                         let winner = challenge.queens.filter(
                             wonby => wonby.won == true
                         );
+                        console.log("The winner is", winner);
                         challenges.push(
                             <h4>
                                 MAXI CHALLENGE:
-                                {" " + challenge.description} {winner[0].name}
+                                {" " + challenge.description}{" "}
+                                {winner.length > 0 && winner[0].name}
                                 {this.prize && " - " + this.prize}
                             </h4>
                         );
@@ -136,7 +132,8 @@ class Episode extends React.Component {
                         challenges.push(
                             <h4>
                                 MINI CHALLENGE
-                                {" " + challenge.description} {winner[0].name}
+                                {" " + challenge.description}{" "}
+                                {winner.length > 0 && winner[0].name}
                                 {this.prize && " - " + this.prize}
                             </h4>
                         );
@@ -144,7 +141,7 @@ class Episode extends React.Component {
                 });
         }
         {
-            this.state.judges &&
+            !this.state.judges.error &&
                 this.state.judges.map(judge => {
                     judges.push(
                         <div
@@ -168,7 +165,7 @@ class Episode extends React.Component {
                 });
         }
         {
-            this.state.lipsyncs &&
+            this.state.lipsyncs.length > 0 &&
                 this.state.lipsyncs.map(lipsync => {
                     let winner = lipsync.queens.filter(
                         wonby => wonby.won == true
@@ -176,7 +173,10 @@ class Episode extends React.Component {
                     <div>
                         The queen who had to lipsync are:
                         {lipsync.queens.map(queen => {
-                            if (winner[0].name == queen.name) {
+                            if (
+                                winner.length > 0 &&
+                                winner[0].name == queen.name
+                            ) {
                                 lipsyncs.push(
                                     <h4> {queen.name} won this lipsync</h4>
                                 );

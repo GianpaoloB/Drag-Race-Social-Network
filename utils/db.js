@@ -78,7 +78,14 @@ exports.getFriends = function getFriends(userId) {
     let params = [userId];
     return db.query(q, params);
 };
-
+exports.searchFriends = name => {
+    return db.query(
+        `SELECT id, first_name, last_name, image_url, id FROM users
+                    WHERE first_name ILIKE  $1 OR last_name ILIKE  $1
+                    LIMIT 10`,
+        [name + "%"]
+    );
+};
 exports.friendshipStatus = function friendshipStatus(userId, profileId) {
     let q = `SELECT * from friendships where
             (id_sender=$1 AND id_recepient=$2)
@@ -161,6 +168,6 @@ exports.insertRank = function insertRank(queenId, c, u, n, t, userId) {
 };
 exports.updateRank = function updateRank(queenId, c, u, n, t, userId) {
     let q = `UPDATE ranking SET charisma=$2, uniqueness=$3, nerve=$4, talent=$5 WHERE(queen_id=$1 AND user_id=$6) RETURNING *;`;
-    let params = [queenId, c || null, u || null, n || null, t || null, userId];
+    let params = [queenId, c || 50, u || 50, n || 50, t || 50, userId];
     return db.query(q, params);
 };

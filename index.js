@@ -184,6 +184,12 @@ app.get("/user/:id/json", (request, response) => {
         });
     }
 });
+app.get("/friendships/search/:name", (request, response) => {
+    db.searchFriends(request.params.name).then(({ rows }) => {
+        response.json(rows);
+        console.log("These are the people i'm finding!", rows.length);
+    });
+});
 app.get("/friendships", (request, response) => {
     db.getFriends(request.session.userId).then(({ rows }) => {
         response.json(rows);

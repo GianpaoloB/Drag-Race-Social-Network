@@ -127,7 +127,7 @@ class QueenRanking extends React.Component {
                                             id="charisma"
                                             readOnly
                                         />{" "}
-                                        {gCarisma} %
+                                        {gCarisma + "%"}
                                     </p>
                                     <p>
                                         <label>U</label>
@@ -140,7 +140,7 @@ class QueenRanking extends React.Component {
                                             id="uniqueness"
                                             readOnly
                                         />
-                                        {gUniqueness} %
+                                        {gUniqueness + "%"}
                                     </p>
                                     <p>
                                         <label>N</label>
@@ -153,7 +153,7 @@ class QueenRanking extends React.Component {
                                             id="nerve"
                                             readOnly
                                         />
-                                        {gNerve} %
+                                        {gNerve + "%"}
                                     </p>
                                     <p>
                                         <label>T</label>
@@ -166,7 +166,7 @@ class QueenRanking extends React.Component {
                                             id="talent"
                                             readOnly
                                         />
-                                        {gTalent} %
+                                        {gTalent + "%"}
                                     </p>
                                 </div>
                             </article>
@@ -189,7 +189,7 @@ class QueenRanking extends React.Component {
                                     onChange={handleInput}
                                     className="slider"
                                 />
-                                {carisma}%
+                                {this.state.charisma || carisma}%
                             </p>
                             <p>
                                 <label>U</label>
@@ -202,7 +202,7 @@ class QueenRanking extends React.Component {
                                     defaultValue={uniqueness}
                                     className="slider"
                                 />
-                                {uniqueness} %
+                                {this.state.uniqueness || uniqueness} %
                             </p>
                             <p>
                                 <label>N</label>
@@ -215,7 +215,7 @@ class QueenRanking extends React.Component {
                                     onChange={handleInput}
                                     className="slider"
                                 />
-                                {nerve} %
+                                {this.state.nerve || nerve} %
                             </p>
                             <p>
                                 <label>T</label>
@@ -228,7 +228,7 @@ class QueenRanking extends React.Component {
                                     className="slider"
                                     onChange={handleInput}
                                 />
-                                {talent} %
+                                {this.state.talent || talent} %
                             </p>
                             <button onClick={e => this.submit(e)}>VOTE</button>
                         </div>

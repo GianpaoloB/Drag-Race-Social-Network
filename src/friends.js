@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { getFriends, unfriend, becomeFriends } from "./actions";
-
+import SearchbarFriends from "./search_friends";
 class Friends extends React.Component {
     componentDidMount() {
         this.props.dispatch(getFriends());
@@ -80,7 +80,9 @@ class Friends extends React.Component {
         return (
             <section className="project" id="friendspage">
                 <div id="friends">
-                    <h3>Your Heathers</h3>
+                    <h3>
+                        Your Heathers <SearchbarFriends />
+                    </h3>
                     <div className="container">{friends}</div>
                 </div>
                 <div id="wannabes">
