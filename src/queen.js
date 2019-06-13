@@ -168,9 +168,7 @@ class Queen extends React.Component {
                     </div>
                     <br />
                     <br />
-                    <h3>
-                        SEASONS {document.location.pathname.slice(8)} Episodes
-                    </h3>
+                    <h3>{this.state.queen.name}'s Episodes</h3>
                     <div className="container episodes">
                         <ul>{episodes}</ul>
                     </div>
