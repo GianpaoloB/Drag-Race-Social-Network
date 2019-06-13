@@ -288,7 +288,8 @@ section.project#friendspage
 #wannabes {
     margin-bottom: 30px;
 }
-#friends {
+#friends,
+#seasons {
     position: relative;
 }
 #friends h3,

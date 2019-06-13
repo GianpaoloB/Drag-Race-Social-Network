@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import moment from "moment";
+import SearchbarQueens from "./search_queen.js";
 
 class Season extends React.Component {
     constructor(props) {
@@ -181,7 +182,10 @@ class Season extends React.Component {
                 <div id="seasons">
                     {this.state.queens && (
                         <article>
-                            <h3>SEASONS {seasonNumber} Queens</h3>
+                            <h3>
+                                SEASONS {seasonNumber} Queens{" "}
+                                <SearchbarQueens />
+                            </h3>
                             <div className="container queens">{queens}</div>
                         </article>
                     )}

@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setSeasons } from "./actions";
+import axios from "./axios";
+import SearchbarQueens from "./search_queen.js";
 class Dragrace extends React.Component {
     constructor(props) {
         super(props);
@@ -19,6 +21,8 @@ class Dragrace extends React.Component {
                 console.log("Just set the state", this.state.seasons);
                 this.props.dispatch(setSeasons(this.state.seasons));
             });
+
+        // axios.get("/queens/all/secret");
     }
     render() {
         // const handleInput = e => {
@@ -62,7 +66,9 @@ class Dragrace extends React.Component {
         return (
             <section className="project" id="friendspage">
                 <div id="seasons">
-                    <h3>SEASONS </h3>
+                    <h3>
+                        SEASONS <SearchbarQueens />
+                    </h3>
                     <div className="container">{regular}</div>
 
                     <h3>ALL STARS EDITION </h3>

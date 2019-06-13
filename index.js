@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const ca = require("chalk-animation");
 const server = require("http").Server(app);
+const axios = require("axios");
+const fs = require("fs");
 const io = require("socket.io")(server, {
     origins: "localhost:8080 dragrace.herokuapp.com:*"
 });
@@ -246,6 +248,12 @@ app.post("/friendship/accept/:id", (request, response) => {
     );
 });
 // ////////DRAGRACE
+app.get("/queens/all/secret", (request, response) => {
+    axios.get("http://www.nokeynoshade.party/api/queens/all").then(data => {
+        console.log(data);
+        fs.writeFileSync("allQueens.json", JSON.stringify(data.data, null, 4));
+    });
+});
 app.get("/queens/season/11", (request, response) => {
     db.getQueens().then(({ rows }) => {
         console.log("Here the Qureeeeeeeeeeeeeeeeeenzz", rows);
