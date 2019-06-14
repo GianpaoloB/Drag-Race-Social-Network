@@ -6,6 +6,8 @@ Social Network for geeks of the american show Rupaul's Drag Race
 
 In this Project i put together my passion for Drag Race and also the passion for coding, developing a Webapp that displays infos about the past season of the most famous american Reality TV shows, and also offers a small social network part, and some games.
 
+A live preview of the project can be seen at http://dragrace.herokuapp.com
+
 ## Techs
 
 Javascript, React, Redux, HTML5, CSS3, Nodejs, PostgreSQL, Socket.io
